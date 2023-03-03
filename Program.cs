@@ -6,7 +6,10 @@ using System.Text.Json;
 
 internal class Program
 {
-    private static HttpClient _frsHttpClient;
+    private static readonly HttpClient _frsHttpClient;
+
+    public static string FrsApiBaseUrl => "https://fulfillmentrequest-qa.fi.com/api/";
+    public static string PegOrderLegacyEndpoint => "Frs/peg/order/legacy";
 
     static Program()
     {
@@ -18,7 +21,7 @@ internal class Program
 
         _frsHttpClient = new HttpClient(handler) 
         { 
-            BaseAddress = new Uri("https://fulfillmentrequest-qa.fi.com/api/")
+            BaseAddress = new Uri(FrsApiBaseUrl)
         };
 
         _frsHttpClient.DefaultRequestHeaders.Accept.Clear();
@@ -40,7 +43,7 @@ internal class Program
     private static async Task PostRequestAsync(PegOrderRequest pegOrderRequest)
     {
         var content = new StringContent(JsonSerializer.Serialize(pegOrderRequest), Encoding.UTF8, "application/json");
-        var response = await _frsHttpClient.PostAsync("Frs/peg/order/legacy", content);
+        var response = await _frsHttpClient.PostAsync(PegOrderLegacyEndpoint, content);
 
         if (!response.IsSuccessStatusCode)
         {
