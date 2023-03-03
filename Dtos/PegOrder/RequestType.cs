@@ -2,7 +2,7 @@
 {
     public class RequestType
     {
-        public int Id { get; set; }
+        public RequestTypeEnumeration Id { get; set; }
         public string Description { get; set; }
     }
 }

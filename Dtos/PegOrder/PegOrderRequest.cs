@@ -4,6 +4,5 @@
     {
         public PegDetails PegDetails { get; set; }
         public Attachment Attachment { get; set; }
-        public Submiter Submiter { get; set; }
     }
 }
