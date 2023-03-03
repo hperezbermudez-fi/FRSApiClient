@@ -1,1 +1,1 @@
-# Console Application that POST to FRSAPI -> PegOrder/Legacy
+# Console Application that POST to FRSAPI -> Peg/Order/Legacy endpoint
